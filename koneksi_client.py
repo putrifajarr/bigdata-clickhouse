@@ -1,3 +1,5 @@
+import clickhouse_connect
+
 # Konfigurasi Koneksi ke clickhouse melalui ngrok
 client = clickhouse_connect.get_client(
     host='overproficiently-unbenevolent-gregoria.ngrok-free.dev', 
