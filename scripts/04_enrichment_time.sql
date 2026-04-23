@@ -11,4 +11,4 @@ SELECT
         PARTITION BY url, ticker
         ORDER BY scraped_at DESC
     ) AS rn
-FROM praktikum.scrape_data_sample;
+FROM praktikum.scrape_data_sample; --ganti dengan nama tabel yang sesuai
