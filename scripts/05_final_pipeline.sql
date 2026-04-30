@@ -42,7 +42,12 @@ standardized AS (
 
 features AS (
     SELECT
-        *,
+        cik_clean,
+        cleaned_company,
+        title,
+        text,
+        url,
+        ts,
         toHour(ts) AS hour,
         toMinute(ts) AS minute,
         toDayOfWeek(ts) AS day_of_week,
