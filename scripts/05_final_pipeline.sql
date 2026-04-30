@@ -61,24 +61,17 @@ features AS (
     FROM standardized
 ),
 
-final AS (
-    SELECT
-        cik_clean,
-        cleaned_company,
-        title,
-        text,
-        url,
-        ts,
-        hour,
-        minute,
-        day_of_week,
-        is_weekend
+dedup AS (
+    SELECT *
     FROM features
-    WHERE 
-        rn = 1
-        AND text IS NOT NULL
-        AND length(text) > 0
-        AND cik_clean IS NOT NULL
+    WHERE (url, cik_clean, ts) IN (
+        SELECT 
+            url, 
+            cik_clean, 
+            max(ts)
+        FROM features
+        GROUP BY url, cik_clean
+    )
 )
 
 SELECT * FROM final
